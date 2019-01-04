@@ -2,26 +2,25 @@ var player1Hand = [];
 var player1Score = 0;
 var player2Hand = [];
 var player2Score = 0;
+const values = [
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "10",
+  "J",
+  "Q",
+  "K",
+  "A"
+];
+
+const suits = ["Spades", "Clubs", "Diamonds", "Hearts"];
 
 createDeck = () => {
-  const values = [
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-    "J",
-    "Q",
-    "K",
-    "A"
-  ];
-
-  const suits = ["Spades", "Clubs", "Diamonds", "Hearts"];
-
   var deck = [];
   values.forEach(value => {
     for (var i = 0; i < suits.length; i++) {
@@ -63,28 +62,13 @@ playRound = (player1Hand, player2Hand) => {
 // 1: Tie
 // 2: Player 2 wins
 compareCard = (card1, card2) => {
-  const values = [
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-    "J",
-    "Q",
-    "K",
-    "A"
-  ];
   console.log(card1);
   console.log(card2);
   if (values.indexOf(card1.value) > values.indexOf(card2.value)) {
     console.log("Player 1 wins");
     return 0;
   } else if (values.indexOf(card1.value) === values.indexOf(card2.value)) {
-    console.log("Tie!");
+    engageWar(player1Hand, player2Hand);
     return 1;
   } else {
     console.log("Player 2 wins");
